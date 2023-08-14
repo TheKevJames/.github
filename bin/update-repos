@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR=$(dirname "$(dirname "$(realpath "$(dirname "${BASH_SOURCE[0]}")")")")
+
+REPOS="${*/ /\0}"
+if [[ -z "${REPOS}" ]]; then
+    REPOS=$(fd -td -d1 . "${DIR}")
+fi
+
+# for each repo:
+#   create a pane
+#   cd into it
+#   run git sync
+#   if git sync succeeds:
+#     find all files from the template repo
+#     remove the files which aren't used as templates
+#     copy them into the local repo
+# shellcheck disable=SC2086
+xpanes \
+    -B "cd {}" \
+    -B "git sync" \
+    -c "[[ \$? == 0 ]] && fd -tf --hidden --strip-cwd-prefix --base-directory ${DIR}/.github . | grep -vE '^(\.git/.*)|(\.github/FUNDING.yml)|(bin/.*)|(README.rst)$' | xargs -I{} cp ${DIR}/.github/{} {}" \
+    ${REPOS}
