@@ -63,12 +63,12 @@ repos:
     -   id: remove-crlf
     -   id: remove-tabs
 -   repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.10.0
+    rev: v3.11.0
     hooks:
     -   id: reorder-python-imports
         args: [--py311-plus]
 -   repo: https://github.com/asottile/pyupgrade
-    rev: v3.10.1
+    rev: v3.11.0
     hooks:
     -   id: pyupgrade
         args: [--py311-plus]
@@ -193,7 +193,7 @@ repos:
 
 # terraform
 -   repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.83.2
+    rev: v1.83.3
     hooks:
     -   id: terraform_fmt
     -   id: terraform_validate
