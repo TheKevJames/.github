@@ -7,6 +7,9 @@ REPOS="${*/ /\0}"
 if [[ -z "${REPOS}" ]]; then
     REPOS=$(fd -td -d1 . "${DIR}")
 fi
+# TODO: fixup these repos
+# TODO: I have a lot of exceptions here... this needs to be refactored into a more complicated script to handle this. Keep overrides separate and compile 'em together?
+REPOS=$(echo "${REPOS}" | grep -v puppet-homebrew | grep -v experiments | grep -v dotsystem | grep -v coveralls-python)
 
 # for each repo:
 #   create a pane
