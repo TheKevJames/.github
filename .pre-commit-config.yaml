@@ -44,7 +44,7 @@ repos:
       - id: name-tests-test
       - id: requirements-txt-fixer
   - repo: https://github.com/PyCQA/pylint
-    rev: v3.0.3
+    rev: v3.1.0
     hooks:
     # TODO: pylint-import-modules support for pylint v3 (or alternative linter)
       - id: pylint
@@ -114,9 +114,7 @@ repos:
         - flake8-2020==1.8.1
         - flake8-broken-line==1.0.0
         - flake8-builtins==2.2.0
-        - flake8-commas==2.1.0
         - flake8-comprehensions==3.14.0
-        - flake8-typing-imports==1.15.0
   - repo: https://github.com/guilatrova/tryceratops
     rev: v2.3.2
     hooks:
@@ -235,7 +233,7 @@ repos:
 
 # terraform
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.87.1
+    rev: v1.88.0
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
