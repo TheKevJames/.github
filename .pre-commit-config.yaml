@@ -112,7 +112,7 @@ repos:
         # required noqa's related to these plugins
         additional_dependencies: &flake8deps
           # renovate: datasource=pypi depName=flake8-2020
-          - flake8-2020==1.8.0
+          - flake8-2020==1.8.1
           # renovate: datasource=pypi depName=flake8-broken-line
           - flake8-broken-line==1.0.0
           # renovate: datasource=pypi depName=flake8-builtins
