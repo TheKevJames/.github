@@ -203,7 +203,7 @@ repos:
       - id: check-github-workflows
       - id: check-renovate
         additional_dependencies:
-          # renovate: datasource=pypi depName=poetry
+          # renovate: datasource=pypi depName=pyjson5
           - pyjson5==1.6.4
 
 # docker
