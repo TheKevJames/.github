@@ -111,9 +111,13 @@ repos:
         # N.B. keep these in sync with flake8, otherwise yesqa will remove
         # required noqa's related to these plugins
         additional_dependencies: &flake8deps
-        - flake8-2020==1.8.1
+        # renovate: datasource=pypi depName=flake8-2020
+        - flake8-2020==1.8.0
+        # renovate: datasource=pypi depName=flake8-broken-line
         - flake8-broken-line==1.0.0
+        # renovate: datasource=pypi depName=flake8-builtins
         - flake8-builtins==2.2.0
+        # renovate: datasource=pypi depName=flake8-comprehensions
         - flake8-comprehensions==3.14.0
   - repo: https://github.com/guilatrova/tryceratops
     rev: v2.3.2
@@ -163,7 +167,8 @@ repos:
         entry: bash -c 'set -e; for toml in "$@"; do pushd ./${toml%pyproject.toml}; poetry check; popd; done' --
         language: python
         additional_dependencies:
-          - poetry>=1.5.0
+          # renovate: datasource=pypi depName=poetry
+          - poetry==1.8.0
         pass_filenames: true
         files: 'pyproject\.toml$'
       - id: poetry-use-version-ranges
@@ -198,7 +203,8 @@ repos:
       - id: check-github-workflows
       - id: check-renovate
         additional_dependencies:
-        - pyjson5
+          # renovate: datasource=pypi depName=poetry
+          - pyjson5==1.6.4
 
 # docker
   - repo: https://github.com/AleksaC/hadolint-py
