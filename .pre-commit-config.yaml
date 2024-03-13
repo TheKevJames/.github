@@ -88,7 +88,7 @@ repos:
     hooks:
       - id: add-trailing-comma
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
+    rev: v1.9.0
     hooks:
       - id: mypy
         require_serial: True
@@ -153,7 +153,7 @@ repos:
           - --ignore=E501,E741,W503
           - --min-python-version=3.11
   - repo: https://github.com/dosisod/refurb
-    rev: v1.28.0
+    rev: v2.0.0
     hooks:
       - id: refurb
         args:
@@ -239,7 +239,7 @@ repos:
 
 # terraform
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.88.0
+    rev: v1.88.1
     hooks:
       - id: terraform_fmt
       - id: terraform_validate
