@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-pre-commit autoupdate
-
-FLAKE8_DEPS=$(yq -r '.repos[] | select(.repo=="https://github.com/asottile/yesqa").hooks[] | select(.id=="yesqa").additional_dependencies[]' .pre-commit-config.yaml | cut -d= -f1 | xargs -I{} bash -c "echo -n '        - {}=='; pypi-versions {} | sort-semver | head -n1")
-sed -Ei~ '/- flake8-.*==/d' .pre-commit-config.yaml
-sed -i~ '/: &flake8deps$/r'<(echo "${FLAKE8_DEPS}") .pre-commit-config.yaml

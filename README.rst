@@ -6,12 +6,6 @@ Default Github configuration files live here. See `their docs`_.
 Usage
 -----
 
-Update templates in this repo:
-
-.. code-block:: console
-
-    ./bin/update-templates
-
 Update cloned repos from this template:
 
 .. code-block:: console

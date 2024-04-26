@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+TARGET=$(realpath "${1}")
+[[ -d "${TARGET}/.git" ]] || { echo >&2 "ERROR: ${TARGET} is not a git dir."; exit 1; }
+
+TEMPLATE_REPO=$(dirname "$(realpath "$(dirname "${BASH_SOURCE[0]}")")")
+
+# find all files from the template repo
+# remove the files which aren't used as templates
+# copy them into the local repo
+fd -tf --hidden --strip-cwd-prefix --base-directory "${TEMPLATE_REPO}" . | grep -vE '^(\.git/.*)|(\.github/FUNDING.yml)|(bin/.*)|(README.rst)$' | xargs -I{} cp "${TEMPLATE_REPO}/{}" "${TARGET}/{}"
