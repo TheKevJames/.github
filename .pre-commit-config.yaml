@@ -151,7 +151,6 @@ repos:
           # E741: Do not use variables named 'I', 'O', or 'l'.
           # W503: Line break occurred before a binary operator. Breaks PEP8.
           - --ignore=E501,E741,W503
-          - --min-python-version=3.11
   - repo: https://github.com/dosisod/refurb
     rev: v2.0.0
     hooks:
