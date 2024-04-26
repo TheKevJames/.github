@@ -170,7 +170,7 @@ repos:
           - poetry==1.8.2
         pass_filenames: true
         files: 'pyproject\.toml$'
-      - id: poetry-use-version-ranges
+      - id: pyproject-use-version-ranges
         name: avoid using carets for version ranges
         description: 'Avoid using carets for version ranges'
         entry: '\^'
