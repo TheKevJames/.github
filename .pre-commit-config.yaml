@@ -53,6 +53,7 @@ repos:
           - --max-complexity=10
           - --max-line-length=79
           - --max-module-lines=500
+          - --max-positional-arguments=10
           - --max-args=10
           - --score=n
           # TODO: narrow these down
