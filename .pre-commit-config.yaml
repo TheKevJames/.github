@@ -209,6 +209,7 @@ repos:
 
 # docker
   - repo: https://github.com/AleksaC/hadolint-py
+    # renovate: datasource=git-tags depName=hadolint/hadolint
     rev: v2.12.1b3
     hooks:
       - id: hadolint
