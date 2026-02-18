@@ -178,6 +178,14 @@ repos:
         language: pygrep
         types: [toml]
         files: 'pyproject.toml$'
+      - id: pyproject-no-unpinned-git-deps
+        name: disallow git dependencies without rev/tag
+        description: 'Disallow Poetry/PDM git dependencies unless they are pinned with a rev or tag on the same line'
+        # Flags lines that contain `git = "..."` but do NOT also contain `rev =` or `tag =`.
+        entry: '^(?!\s*#)(?=[^#]*\bgit\s*=\s*"[^"]+")(?![^#]*\b(?:rev|tag)\s*=).*$'
+        language: pygrep
+        types: [toml]
+        files: 'pyproject\.toml$'
       - id: pytest-fixtures-require-scope
         name: ensure pytest fixture scopes are explicitly set
         description: 'Ensure we explicitly set pytest fixture scopes'
