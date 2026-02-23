@@ -46,7 +46,6 @@ repos:
   - repo: https://github.com/PyCQA/pylint
     rev: v4.0.5
     hooks:
-    # TODO: pylint-import-modules support for pylint v3 (or alternative linter)
       - id: pylint
         args:
           - --load-plugins=pylint.extensions.mccabe
@@ -56,7 +55,6 @@ repos:
           - --max-positional-arguments=10
           - --max-args=10
           - --score=n
-          # TODO: narrow these down
           - -d broad-except
           - -d duplicate-code
           - -d fixme
