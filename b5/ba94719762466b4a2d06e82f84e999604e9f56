@@ -1,0 +1,14 @@
+.github/settings.yml
+  h_b8efbacaba1c31 22,26,29,32,36,40-46,48-49,51-57,68-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "b5ba94719762466b4a2d06e82f84e999604e9f56",
+  "prompts": {},
+  "humans": {
+    "h_b8efbacaba1c31": {
+      "author": "Kevin James <KevinJames@thekev.in>"
+    }
+  }
+}
