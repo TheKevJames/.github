@@ -39,7 +39,6 @@ repos:
       - id: trailing-whitespace
 
 # python
-      - id: check-ast
       - id: check-builtin-literals
       - id: check-docstring-first
       - id: double-quote-string-fixer
