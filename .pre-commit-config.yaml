@@ -153,10 +153,11 @@ repos:
     hooks:
       - id: ruff
         args:
+          - --fix
           - --target-version
           - py311
           - --select
-          - A,C4,C901,D,E,F,RUF006,S307,T10,UP,W,YTT
+          - A,C4,C901,D,E,F,G010,RUF006,S307,T10,UP,W,YTT
           - --config
           - lint.mccabe.max-complexity = 10
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
@@ -199,7 +200,6 @@ repos:
   - repo: https://github.com/pre-commit/pygrep-hooks
     rev: v1.10.0
     hooks:
-      - id: python-no-log-warn
       - id: python-use-type-annotations
 
 # rst
