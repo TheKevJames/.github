@@ -41,7 +41,6 @@ repos:
 # python
       - id: check-builtin-literals
       - id: check-docstring-first
-      - id: double-quote-string-fixer
       - id: name-tests-test
       - id: requirements-txt-fixer
   - repo: https://github.com/PyCQA/pylint
@@ -76,10 +75,6 @@ repos:
     hooks:
       - id: reorder-python-imports
         args: [--py311-plus]
-  - repo: https://github.com/asottile/add-trailing-comma
-    rev: v4.0.0
-    hooks:
-      - id: add-trailing-comma
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v2.3.1
     hooks:
@@ -109,11 +104,6 @@ repos:
           - flake8-broken-line==1.0.0
           - flake8-complicated-walrus==2.1.0
           - flake8-import-restrictions==2.1
-  - repo: https://github.com/hhatto/autopep8
-    rev: v2.3.2
-    hooks:
-      - id: autopep8
-        args: [-a, -i, -p2]
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
@@ -150,12 +140,24 @@ repos:
           - --config
           - lint.mccabe.max-complexity = 10
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
-          # E501: Line too long. Covered by autopep8.
+          # E501: Line too long. Covered by ruff format.
           # E741: Do not use variables named 'I', 'O', or 'l'.
           # TRY003: Avoid long messages outside the exception class.
           # TRY301: Abstract raise to an inner function.
           - --ignore
           - D1,D203,D205,D212,D400,D401,D404,D407,D412,D413,E501,E741,TRY003,TRY301
+      - id: ruff-format
+        args:
+          - --config
+          - line-length = 79
+          - --config
+          - format.quote-style = 'single'
+          - --config
+          - format.skip-magic-trailing-comma = true
+          # Silence the isort/formatter magic-comma incompatibility warning;
+          # imports are handled by reorder-python-imports, not ruff's isort.
+          - --config
+          - lint.isort.split-on-trailing-comma = false
   - repo: local
     hooks:
       - id: poetry-check
