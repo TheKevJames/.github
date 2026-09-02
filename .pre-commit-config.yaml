@@ -162,6 +162,11 @@ repos:
         args:
           - --python-version
           - '3.11'
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.5
+    hooks:
+      - id: ruff
+        args: [--select, RUF006]
   - repo: local
     hooks:
       - id: poetry-check
