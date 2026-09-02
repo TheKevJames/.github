@@ -88,22 +88,15 @@ repos:
           - --strict
           - --strict-equality
           - --warn-unreachable
-  - repo: https://github.com/asottile/yesqa
-    rev: v1.5.0
-    hooks:
-      - id: yesqa
-        language: python
-        # N.B. keep these in sync with flake8, otherwise yesqa will remove
-        # required noqa's related to these plugins
-        additional_dependencies: &flake8deps
-          - flake8-broken-line==1.0.0
-          - flake8-complicated-walrus==2.1.0
-          - flake8-import-restrictions==2.1
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
       - id: flake8
-        additional_dependencies: *flake8deps
+        language: python
+        additional_dependencies:
+          - flake8-broken-line==1.0.0
+          - flake8-complicated-walrus==2.1.0
+          - flake8-import-restrictions==2.1
         args:
           # https://www.flake8rules.com/
           # Restrict flake8 to plugins with no ruff equivalent; core
@@ -115,6 +108,7 @@ repos:
           # IMR241: When using 'from', import submodules not elements.
           - --select=FCW,IMR,N400
           - --ignore=IMR200,IMR241
+  # TODO: use ruff once more refurb ruloes are out of preview
   - repo: https://github.com/dosisod/refurb
     rev: v2.3.1
     hooks:
@@ -131,9 +125,13 @@ repos:
           - --target-version
           - py311
           - --select
-          - A,C4,C901,D,E,F,G010,I,RUF006,S307,T10,TRY,UP,W,YTT
+          - A,C4,C901,D,E,F,G010,I,RUF006,RUF100,S307,T10,TRY,UP,W,YTT
           - --config
           - lint.mccabe.max-complexity = 10
+          # Codes owned by flake8 plugins with no ruff equivalent; keeps
+          # RUF100 from stripping their noqa directives.
+          - --config
+          - lint.external = ['N400', 'FCW', 'IMR']
           - --config
           - lint.isort.force-single-line = true
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
