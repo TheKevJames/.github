@@ -50,8 +50,6 @@ repos:
     hooks:
       - id: pylint
         args:
-          - --load-plugins=pylint.extensions.mccabe
-          - --max-complexity=10
           - --max-line-length=79
           - --max-module-lines=500
           - --max-positional-arguments=10
@@ -158,7 +156,9 @@ repos:
           - --target-version
           - py311
           - --select
-          - A,C4,D,E,F,RUF006,T10,UP,W,YTT
+          - A,C4,C901,D,E,F,RUF006,T10,UP,W,YTT
+          - --config
+          - lint.mccabe.max-complexity = 10
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
           # E501: Line too long. Covered by autopep8.
           # E741: Do not use variables named 'I', 'O', or 'l'.
