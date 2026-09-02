@@ -127,12 +127,6 @@ repos:
     hooks:
       - id: autopep8
         args: [-a, -i, -p2]
-  - repo: https://github.com/PyCQA/pydocstyle
-    rev: 6.3.0
-    hooks:
-      - id: pydocstyle
-        args:
-          - --ignore=D1,D203,D205,D212,D400,D401,D404,D407,D412,D413
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:
@@ -164,11 +158,12 @@ repos:
           - --target-version
           - py311
           - --select
-          - A,C4,E,F,RUF006,T10,UP,W,YTT
+          - A,C4,D,E,F,RUF006,T10,UP,W,YTT
+          # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
           # E501: Line too long. Covered by autopep8.
           # E741: Do not use variables named 'I', 'O', or 'l'.
           - --ignore
-          - E501,E741
+          - D1,D203,D205,D212,D400,D401,D404,D407,D412,D413,E501,E741
   - repo: local
     hooks:
       - id: poetry-check
