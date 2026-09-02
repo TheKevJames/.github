@@ -62,19 +62,14 @@ repos:
           - -d missing-docstring
           - -d too-few-public-methods
           - -d try-except-raise
-          - -d ungrouped-imports  # conflicts with reorder-python-imports
-          - -d wrong-import-order  # conflicts with reorder-python-imports
+          - -d ungrouped-imports  # conflicts with ruff isort
+          - -d wrong-import-order  # conflicts with ruff isort
   - repo: https://github.com/Lucas-C/pre-commit-hooks
     rev: v1.5.6
     hooks:
       - id: remove-crlf
       - id: remove-tabs
         exclude: 'Makefile'
-  - repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.17.0
-    hooks:
-      - id: reorder-python-imports
-        args: [--py311-plus]
   - repo: https://github.com/pre-commit/mirrors-mypy
     rev: v2.3.1
     hooks:
@@ -136,9 +131,11 @@ repos:
           - --target-version
           - py311
           - --select
-          - A,C4,C901,D,E,F,G010,RUF006,S307,T10,TRY,UP,W,YTT
+          - A,C4,C901,D,E,F,G010,I,RUF006,S307,T10,TRY,UP,W,YTT
           - --config
           - lint.mccabe.max-complexity = 10
+          - --config
+          - lint.isort.force-single-line = true
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
           # E501: Line too long. Covered by ruff format.
           # E741: Do not use variables named 'I', 'O', or 'l'.
@@ -154,8 +151,7 @@ repos:
           - format.quote-style = 'single'
           - --config
           - format.skip-magic-trailing-comma = true
-          # Silence the isort/formatter magic-comma incompatibility warning;
-          # imports are handled by reorder-python-imports, not ruff's isort.
+          # Silence the isort/formatter magic-comma incompatibility warning.
           - --config
           - lint.isort.split-on-trailing-comma = false
   - repo: local
