@@ -109,11 +109,8 @@ repos:
         # N.B. keep these in sync with flake8, otherwise yesqa will remove
         # required noqa's related to these plugins
         additional_dependencies: &flake8deps
-          - flake8-2020==1.8.1
           - flake8-broken-line==1.0.0
-          - flake8-builtins==3.1.0
           - flake8-complicated-walrus==2.1.0
-          - flake8-comprehensions==3.17.0
           - flake8-import-restrictions==2.1
   - repo: https://github.com/guilatrova/tryceratops
     rev: v2.4.1
@@ -164,7 +161,7 @@ repos:
           - --target-version
           - py311
           - --select
-          - RUF006,UP,T10
+          - A,C4,RUF006,T10,UP,YTT
   - repo: local
     hooks:
       - id: poetry-check
