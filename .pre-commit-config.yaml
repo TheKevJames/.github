@@ -109,16 +109,6 @@ repos:
           - flake8-broken-line==1.0.0
           - flake8-complicated-walrus==2.1.0
           - flake8-import-restrictions==2.1
-  - repo: https://github.com/guilatrova/tryceratops
-    rev: v2.4.1
-    hooks:
-      - id: tryceratops
-        args:
-          - --autofix
-          - -iTRY003
-          - -iTRY100
-          - -iTRY101
-          - -iTRY301
   - repo: https://github.com/hhatto/autopep8
     rev: v2.3.2
     hooks:
@@ -156,14 +146,16 @@ repos:
           - --target-version
           - py311
           - --select
-          - A,C4,C901,D,E,F,G010,RUF006,S307,T10,UP,W,YTT
+          - A,C4,C901,D,E,F,G010,RUF006,S307,T10,TRY,UP,W,YTT
           - --config
           - lint.mccabe.max-complexity = 10
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
           # E501: Line too long. Covered by autopep8.
           # E741: Do not use variables named 'I', 'O', or 'l'.
+          # TRY003: Avoid long messages outside the exception class.
+          # TRY301: Abstract raise to an inner function.
           - --ignore
-          - D1,D203,D205,D212,D400,D401,D404,D407,D412,D413,E501,E741
+          - D1,D203,D205,D212,D400,D401,D404,D407,D412,D413,E501,E741,TRY003,TRY301
   - repo: local
     hooks:
       - id: poetry-check
