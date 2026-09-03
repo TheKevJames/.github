@@ -97,16 +97,19 @@ repos:
           - flake8-broken-line==1.0.0
           - flake8-complicated-walrus==2.1.0
           - flake8-import-restrictions==2.1
+          # TODO: consider switching to deptry
+          - flake8-requirements==2.3.0
         args:
           # https://www.flake8rules.com/
           # Restrict flake8 to plugins with no ruff equivalent; core
           # pyflakes/pycodestyle (E/W/F) are handled by ruff.
           # FCW: flake8-complicated-walrus
+          # I90: flake8-requirements
           # IMR: flake8-import-restrictions
           # N400: flake8-broken-line
           # IMR200: Imports should only happen on module level, not locally. Covered by pylint.
           # IMR241: When using 'from', import submodules not elements.
-          - --select=FCW,IMR,N400
+          - --select=FCW,I90,IMR,N400
           - --ignore=IMR200,IMR241
   # TODO: use ruff once more refurb ruloes are out of preview
   - repo: https://github.com/dosisod/refurb
@@ -132,7 +135,7 @@ repos:
           # Codes owned by flake8 plugins with no ruff equivalent; keeps
           # RUF100 from stripping their noqa directives.
           - --config
-          - lint.external = ['N400', 'FCW', 'IMR']
+          - lint.external = ['FCW', 'I90', 'IMR', 'N400']
           - --config
           - lint.isort.force-single-line = true
           # D1,D203,D205,D212,D400,D401,D404,D407,D412,D413: pydocstyle opinions.
